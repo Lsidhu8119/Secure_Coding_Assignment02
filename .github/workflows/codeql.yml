@@ -8,14 +8,14 @@ on:
   schedule:
     - cron: '21 11 * * 4'
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   analyze:
     name: Analyze (python)
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      actions: read
-      contents: read
 
     strategy:
       fail-fast: false
@@ -33,11 +33,6 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
-
-      - name: List Python files (debug)
-        run: |
-          echo "Listing all Python files in the repo..."
-          find . -name "*.py"
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
