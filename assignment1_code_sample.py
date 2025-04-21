@@ -1,7 +1,8 @@
 import os
 import subprocess
-import pymysql
 from urllib.request import urlopen
+
+import pymysql
 
 # Securely load database config from environment variables
 db_config = {
