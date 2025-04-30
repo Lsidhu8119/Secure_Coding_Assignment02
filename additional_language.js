@@ -5,7 +5,7 @@ const port = 3000;
 
 http.createServer((req, res) => {
   const url = req.url;
-
+// changes to check if scanning 
   fs.readFile("." + url, (err, data) => {
     if (err) {
       res.writeHead(404);
